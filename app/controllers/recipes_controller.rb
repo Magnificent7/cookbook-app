@@ -1,7 +1,14 @@
 class RecipesController < ApplicationController
-  def single_recipe
-    @recipe = Recipe.first
-    render "single_recipe.html.erb"
+
+  def index
+    @recipes = Recipe.all #array of hashes
+    render "index.html.erb"
+  end
+
+  def show
+    recipe_id = params[:id]
+    @recipe = Recipe.find(recipe_id) #single hash
+    render "show.html.erb"
   end
 
   def new_recipe_form
@@ -15,4 +22,5 @@ class RecipesController < ApplicationController
       )
     render "new_recipe_result.html.erb"
   end
+
 end
