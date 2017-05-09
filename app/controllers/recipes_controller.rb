@@ -32,9 +32,9 @@ class RecipesController < ApplicationController
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
+    recipe = Recipe.find(params[:id])
 
-    @recipe.update(
+    recipe.update(
       title: params[:title], 
       chef: params[:chef],
       ingredients: params[:ingredients],
@@ -42,6 +42,12 @@ class RecipesController < ApplicationController
       prep_time: params[:prep_time]
       )
     render "update.html.erb"
+  end
+
+  def destroy
+    recipe = Recipe.find(params[:id])
+    recipe.destroy
+    render "destroy.html.erb"
   end
 
 end

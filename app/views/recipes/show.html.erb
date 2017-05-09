@@ -4,4 +4,6 @@
 <h2><%= @recipe.ingredients %></h2>
 <h2><%= @recipe.directions %></h2>
 
-<button class="btn btn-primary">Bootstrap Button</button>
+<%= form_tag "/recipes/#{@recipe.id}", method: :delete do %>
+  <input type="submit" value="DELETE RECIPE">
+<% end %>
