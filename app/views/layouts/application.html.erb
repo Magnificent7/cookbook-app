@@ -51,20 +51,19 @@
         </div><!-- /.container-fluid -->
     </nav>
 
-      <div class="container">
+    <% flash.each do |key, message| %>
 
-        <% flash.each do |key, message| %>
+    <div class="alert alert-<%= key %> alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+      <%= message %>
+    </div>
 
-        <div class="alert alert-<%= key %> alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
-          <%= message %>
-        </div>
+    <% end %>
 
-        <% end %>
+    <div class="container">
+      <%= yield %>
+    </div>
 
-        <%= yield %>
-      </div>
-      
   </body>
 </html>
 
