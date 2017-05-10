@@ -16,14 +16,15 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @new_recipe = Recipe.create(
+    new_recipe = Recipe.create(
       title: params[:title], 
       chef: params[:chef],
       ingredients: params[:ingredients],
       directions: params[:directions],
       prep_time: params[:prep_time]
       )
-    redirect_to "/recipes/#{@new_recipe.id}"
+    flash[:success] = "Recipe successfully created!"
+    redirect_to "/recipes/#{new_recipe.id}"
   end
 
   def edit
@@ -41,12 +42,14 @@ class RecipesController < ApplicationController
       directions: params[:directions],
       prep_time: params[:prep_time]
       )
+    flash[:success] = "Recipe successfully updated!"
     redirect_to "/recipes/#{recipe.id}"
   end
 
   def destroy
     recipe = Recipe.find(params[:id])
     recipe.destroy
+    flash[:success] = "Recipe successfully deleted!"
     redirect_to "/recipes"
   end
 
