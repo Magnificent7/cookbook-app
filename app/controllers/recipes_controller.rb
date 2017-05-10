@@ -23,7 +23,7 @@ class RecipesController < ApplicationController
       directions: params[:directions],
       prep_time: params[:prep_time]
       )
-    render "create.html.erb"
+    redirect_to "/recipes/#{@new_recipe.id}"
   end
 
   def edit
@@ -41,13 +41,13 @@ class RecipesController < ApplicationController
       directions: params[:directions],
       prep_time: params[:prep_time]
       )
-    render "update.html.erb"
+    redirect_to "/recipes/#{recipe.id}"
   end
 
   def destroy
     recipe = Recipe.find(params[:id])
     recipe.destroy
-    render "destroy.html.erb"
+    redirect_to "/recipes"
   end
 
 end
