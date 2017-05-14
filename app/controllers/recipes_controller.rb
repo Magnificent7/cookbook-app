@@ -57,6 +57,12 @@ class RecipesController < ApplicationController
     redirect_to "/recipes"
   end
 
+  def search
+    search_text = params[:search]
+    @recipes = Recipe.where("title LIKE ? OR chef LIKE ?", "%#{search_text}%","%#{search_text}%")
+    render "index.html.erb"
+  end
+
 end
 
 

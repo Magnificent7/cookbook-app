@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   delete "/recipes/:id" => "recipes#destroy"
 
+  post "/search" => "recipes#search"
+
 end
