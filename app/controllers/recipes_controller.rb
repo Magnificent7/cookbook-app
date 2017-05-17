@@ -22,10 +22,10 @@ class RecipesController < ApplicationController
   def create
     new_recipe = Recipe.create(
       title: params[:title], 
-      chef: params[:chef],
       ingredients: params[:ingredients],
       directions: params[:directions],
-      prep_time: params[:prep_time]
+      prep_time: params[:prep_time],
+      user_id: current_user.id
       )
     flash[:success] = "Recipe successfully created!"
     redirect_to "/recipes/#{new_recipe.id}"
@@ -41,7 +41,6 @@ class RecipesController < ApplicationController
 
     recipe.update(
       title: params[:title], 
-      chef: params[:chef],
       ingredients: params[:ingredients],
       directions: params[:directions],
       prep_time: params[:prep_time]

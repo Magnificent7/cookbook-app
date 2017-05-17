@@ -25,8 +25,9 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">Link</a></li>
+              <li><a href="/signup">Signup <span class="sr-only">(current)</span></a></li>
+              <li><a href="/login">Login</a></li>
+              <li><a href="/logout">Logout</a></li>
             </ul>
             
             <!-- change to form tag? -->
@@ -39,7 +40,10 @@
             <% end %>
 
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">Link</a></li>
+              <% if current_user %>  
+                <li>Hi, <%= current_user.first_name %></li>
+              <% end %>
+              <li><a href="/recipes/new">New Recipe</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort By <span class="caret"></span></a>
                 <ul class="dropdown-menu">

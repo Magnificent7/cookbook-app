@@ -1,6 +1,6 @@
 <h1>Recipe Information</h1>
 <h2>Title: <%= @recipe.title %></h2>
-<h2>Chef: <%= @recipe.chef %></h2>
+<h2>Chef: <%= @recipe.user.email %></h2>
 <h2>Prep Time: <%= @recipe.friendly_prep_time %></h2>
 <h2>Ingredients: 
   <ul>
