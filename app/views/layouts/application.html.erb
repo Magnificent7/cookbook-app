@@ -25,9 +25,12 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li><a href="/signup">Signup <span class="sr-only">(current)</span></a></li>
-              <li><a href="/login">Login</a></li>
-              <li><a href="/logout">Logout</a></li>
+              <% if current_user %>
+                <li><a href="/logout">Logout</a></li>
+              <% else %>
+                <li><a href="/signup">Signup <span class="sr-only">(current)</span></a></li>
+                <li><a href="/login">Login</a></li>
+              <% end %>
             </ul>
             
             <!-- change to form tag? -->
@@ -41,7 +44,7 @@
 
             <ul class="nav navbar-nav navbar-right">
               <% if current_user %>  
-                <li>Hi, <%= current_user.first_name %></li>
+                <li><a>Hi, <%= current_user.first_name %></a></li>
               <% end %>
               <li><a href="/recipes/new">New Recipe</a></li>
               <li class="dropdown">
