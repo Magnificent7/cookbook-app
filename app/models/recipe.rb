@@ -1,6 +1,9 @@
 class Recipe < ApplicationRecord
 
   belongs_to :user
+  has_many :categorize_recipes
+  has_many :categories, through: :categorize_recipes
+
 
   def ingredients_list
     return ingredients.split(", ")
